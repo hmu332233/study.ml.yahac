@@ -30,7 +30,7 @@
         // 3. 데이터로 모델을 학습시킵니다. 
         // var fitParam = { epochs: 2000 }; // 몇번을 학습할 것인가 
         var fitParam = {
-            epochs: 100,
+            epochs: 2000,
             callbacks: {
                 onEpochEnd: function(epoch, logs) {
                     console.log('epoch', epoch, logs, 'RMSE', Math.sqrt(logs.loss));
@@ -52,6 +52,12 @@
         // var 다음주원인 = tf.tensor(다음주온도);
         // var 다음주결과 = model.predict(다음주원인);
         // 다음주결과.print();
+
+        // 가중치보기
+        var [weight, bias] = model.getWeights(); // 첫번째 값은 weight 두번째 값은 bias
+        console.log(weight.arraySync());
+        console.log(bias.arraySync());
+        
     </script>
 </body>
 
