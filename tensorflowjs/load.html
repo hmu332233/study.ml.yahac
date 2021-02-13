@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TensorFlow.js Tutorial - lemon</title>
+
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    
+</head>
+
+<body>
+    <script>
+        // 모델 데이터 로드
+        async function main() {
+            window.model = await tf.loadLayersModel('localstorage://my-model');
+        }
+
+        main();
+        
+        
+        
+    </script>
+</body>
+
+</html>
