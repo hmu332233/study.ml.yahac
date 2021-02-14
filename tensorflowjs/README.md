@@ -25,3 +25,20 @@
 - 가중치와 편향을 합쳐서 가중치라고 하기도 함
 - x가 여러개라면
   - `y = a*x1 + b*x2 ... + c`
+
+
+---
+
+## 딥러닝
+
+- perceptron: 뉴런이 나타내는 것을 모방해서 만든 것  (y1 = a * x1 + b * x2 ... c)
+- ANN: 뇌처럼 뉴런들이 연결된 것과 같이 perceptron을 연결해서 만든 것을 Artificial Neural Network이라한다.
+- perceptron 깊게 연결해서 문제를 해결하는 기술을 Depp learning이라 한다.
+
+- node: 값을 나타내는 것 하나하나를 지칭
+- layer: node들의 그룹
+- input layer: 모델로 입력을 받는 layer
+- output layer: 모델에 의해 연산된 값을 출력하는 layer
+- hidden layer: input layer와 output layer 사이에 존재하는 layer
+
+![image](images/deeplearning.png)
