@@ -19,12 +19,12 @@
 
           var X = tf.input({ shape: [4]}); // 입력값은 4개의 column
           var H = tf.layers.dense({ units: 4, activation: 'relu' }).apply(X);
-          var Y = tf.layers.dense({ units: 3 }).apply(H); // one hot encoding을 통해 출력값의 column이 3개가 되었으므로 3
-      //     var Y = tf.layers.dense({ units: 3, activation:'softmax'}).apply(H);
+          // var Y = tf.layers.dense({ units: 3 }).apply(H); // one hot encoding을 통해 출력값의 column이 3개가 되었으므로 3
+          var Y = tf.layers.dense({ units: 3, activation:'softmax'}).apply(H); // softmax - 모든 값을 합쳤을때 1이 되는 출력값으로 만들어주는 함수
           var model = tf.model({ inputs: X, outputs: Y });
 
-          var compileParam = { optimizer: tf.train.adam(), loss: tf.losses.meanSquaredError } // meanSquaredError는 회귀에서 사용
-      //     var compileParam = { optimizer: tf.train.adam(), loss: 'categoricalCrossentropy', metrics:['accuracy'] }
+          // var compileParam = { optimizer: tf.train.adam(), loss: tf.losses.meanSquaredError } // meanSquaredError는 회귀에서 사용
+          var compileParam = { optimizer: tf.train.adam(), loss: 'categoricalCrossentropy', metrics:['accuracy'] }; // 분류에서는 categoricalCrossentropy를 사용, metrics:['accuracy'] 학습에서 accuracy라는 지표를 사용하겠다
 
           model.compile(compileParam);
 
@@ -38,8 +38,8 @@
                 function(epoch, logs){
                   console.log('epoch', epoch, logs, 'RMSE=>', Math.sqrt(logs.loss));
                   _history.push(logs);
-                  tfvis.show.history({name:'loss', tab:'역사'}, _history, ['loss']);
-                  // tfvis.show.history({name:'accuracy', tab:'역사'}, _history, ['acc']);
+                  tfvis.show.history({name:'loss', tab:'역사'}, _history, ['loss']); // 값의 차이
+                  tfvis.show.history({name:'accuracy', tab:'역사'}, _history, ['acc']); // 모델의 정확도를 확률로 표현 0 ~ 1, 1에 가까울수록 정확함
                 }
             }
           }
